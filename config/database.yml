@@ -13,8 +13,8 @@ default: &default
 development:
   <<: *default
   database: db1
-  user: leonmezu
-  password: yet734
+  user: <%= ENV['user'] %>
+  password: <%= ENV['password'] %> 
 
 
 # Warning: The database defined as "test" will be erased and
