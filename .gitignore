@@ -38,3 +38,5 @@ yarn-debug.log*
 # ignore spring
 
 /spring/*.pid
+.env
+.vscode
