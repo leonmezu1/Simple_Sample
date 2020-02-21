@@ -27,6 +27,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
+      flash[:success] = 'User updated succesfully!'
       redirect_to user_path(@user)
     else
       render 'edit'
@@ -35,6 +36,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
+    flash[:danger] = 'User has been deleted!'
     redirect_to users_path
   end
 
