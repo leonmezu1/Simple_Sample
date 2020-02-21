@@ -2,6 +2,7 @@
 
 require 'test_helper'
 
+# rubocop: disable Metrics/ClassLength
 class UsersSignupTest < ActionDispatch::IntegrationTest
   test 'get user path and post to user unsuccesfully' do
     get signup_path
@@ -78,3 +79,5 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_template 'users/show'
   end
 end
+
+# rubocop: enable Metrics/ClassLength
