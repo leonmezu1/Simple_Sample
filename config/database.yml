@@ -12,7 +12,7 @@ default: &default
 
 development:
   <<: *default
-  database: sample_test
+  database: sample_app_development
   user: <%= ENV['user'] %>
   password: <%= ENV['password'] %> 
 
