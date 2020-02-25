@@ -15,14 +15,32 @@ module SessionsHelper
 
   # Returns the current logged-in user (if any).
   def current_user
-    session[:user_id] if @current_user ||= User.find_by(id: session[:user_id])
+    if (user_id = session[:user_id])
+      @current_user ||= User.find_by(id: user_id)
+    elsif (user_id = cookies.signed[:user_id])
+      user = User.find_by(id: user_id)
+      if user&.authenticated?(cookies[:remember_token])
+        log_in user
+        @current_user = user
+      end
+    end
   end
 
+  # Checks if the current user is not nil
   def logged_in?
     !current_user.nil?
   end
 
+  # Forgets a persistent session.
+  def forget(user)
+    user.forget
+    cookies.delete(:user_id)
+    cookies.delete(:remember_token)
+  end
+
+  # Deletes the current session user id and flush current user
   def log_out
+    forget(current_user)
     session.delete(:user_id)
     @current_user = nil
   end
