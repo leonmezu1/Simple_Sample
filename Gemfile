@@ -27,6 +27,12 @@ gem 'bcrypt-ruby', '3.1.5', require: 'bcrypt'
 gem 'dotenv-rails'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+# Added faker to populate some data
+gem 'faker'
+# Added paginate to index pagination
+gem 'will_paginate'
+# Added bootstrap 4 suppor for paginate
+gem 'will_paginate-bootstrap4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get
