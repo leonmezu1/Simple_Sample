@@ -2,7 +2,8 @@
 
 require 'test_helper'
 
-class UserLoginTest < ActionDispatch::IntegrationTest # rubocop: disable Metrics/ClassLength
+# rubocop: disable Metrics/ClassLength
+class UserLoginTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:michael)
   end
@@ -78,3 +79,4 @@ class UserLoginTest < ActionDispatch::IntegrationTest # rubocop: disable Metrics
     assert_empty cookies[:remember_token]
   end
 end
+# rubocop: enable Metrics/ClassLength
