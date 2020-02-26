@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.paginate(page: params[:page])
   end
 
   def create
@@ -58,6 +58,7 @@ class UsersController < ApplicationController
 
   # Confirms a logged-in user.
   def logged_in_user
+    store_location
     redirect_to login_url unless logged_in?
     flash[:danger] = 'Please log in.' unless logged_in?
   end
