@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
+# rubocop: disable Metrics/ClassLength
 class UsersController < ApplicationController
   before_action :set_params, only: %i[edit update show destroy]
-  before_action :logged_in_user, only: %i[edit update]
+  before_action :logged_in_user, only: %i[edit update index destroy]
   before_action :correct_user, only: %i[edit update]
+  before_action :admin_user, only: %i[destroy]
 
   def new
     @user = User.new
@@ -38,9 +40,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    flash.now[:danger] = 'User has been deleted!'
-    redirect_to users_path
+    redirect_to(root_url) unless current_user.admin?
+    destroy_action if current_user.admin?
   end
 
   private
@@ -69,4 +70,16 @@ class UsersController < ApplicationController
     redirect_to(root_url) unless current_user?(@user)
     flash[:danger] = 'Forbidden' unless current_user?(@user)
   end
+
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
+
+  def destroy_action
+    @user.destroy
+    flash.now[:danger] = 'User has been deleted!'
+    redirect_to users_path
+  end
 end
+
+# rubocop: enable Metrics/ClassLength
