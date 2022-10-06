@@ -56,8 +56,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2)
-    addressable (2.7.0)
-      public_suffix (>= 2.0.2, < 5.0)
+    addressable (2.8.1)
+      public_suffix (>= 2.0.2, < 6.0)
     ansi (1.5.0)
     bcrypt (3.1.13)
     bcrypt (3.1.13-java)
@@ -169,7 +169,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
       spoon (~> 0.0)
-    public_suffix (4.0.3)
+    public_suffix (5.0.0)
     puma (4.3.1)
       nio4r (~> 2.0)
     puma (4.3.1-java)
@@ -279,8 +279,6 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.6)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2019.3)
-      tzinfo (>= 1.0.0)
     web-console (4.0.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -337,7 +335,6 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
-  tzinfo-data
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
